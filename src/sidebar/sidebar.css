@@ -15,6 +15,11 @@
 	margin: 16px;
 }
 
+.header-style{
+	width:50%;
+	float: left;
+}
+
 
 
 .ant-layout-sider-collapsed .anticon {
