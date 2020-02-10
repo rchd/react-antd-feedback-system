@@ -10,11 +10,11 @@ import './sidebar.css';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
-const text = <span>Title</span>;
+const text = <span>设置</span>;
 const content = (
     <div>
-        <p>Content</p>
-        <p>Content</p>
+        <p>登出</p>
+        <p>个人信息</p>
     </div>
 );
 
@@ -65,8 +65,8 @@ class SiderBar extends React.Component{
                                 </Link>
                             </Menu.Item>
                             <Menu.Item key="4">
-                                <Link to="/userdel" >
-                                    用户删除
+                                <Link to="/useredit" >
+                                    用户编辑
                                 </Link>
                             </Menu.Item>
                         </SubMenu>
@@ -91,7 +91,7 @@ class SiderBar extends React.Component{
                 <Layout>
                     <Header style={{ background: '#fff'}} >
                         <div className='header-style'>
-                            <h2>Information Management</h2>
+                            <h2>后台管理</h2>
                         </div>
                         <div className='header-style' style={{textAlign:'right'}}>
                             <Popover placement="bottomRight" title={text}
@@ -102,8 +102,8 @@ class SiderBar extends React.Component{
                     </Header>
                     <Content style={{ margin: '0 16px' }}>
                         <Breadcrumb style={{ margin: '16px 0' }}>
-                            <Breadcrumb.Item>User</Breadcrumb.Item>
-                            <Breadcrumb.Item>Bill</Breadcrumb.Item>
+                            <Breadcrumb.Item>{this.props.title}</Breadcrumb.Item>
+                            <Breadcrumb.Item>{this.props.subtitle}</Breadcrumb.Item>
                         </Breadcrumb>
                         <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
                             {this.props.children}

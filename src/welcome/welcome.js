@@ -75,7 +75,11 @@ class Welcome extends React.Component{
     render(){
 
         return(
-            <SiderBar defaultSelectedKeys={['1']}>
+            <SiderBar defaultSelectedKeys={['1']}
+            
+                    title=""
+                    subtitle=""
+            >
                 <Row >
                     <Card title="待办">
                         <Row type="flex">

@@ -39,7 +39,10 @@ const data = {
 class Charts extends React.Component{
     render(){
         return(
-            <SiderBar  defaultSelectedKeys={['2']}>
+            <SiderBar  defaultSelectedKeys={['2']}
+                        title=""
+                        subtitle=""
+            >
                 {
                     //<Line data={data} />
                     //<HorizontalBar data={data} />

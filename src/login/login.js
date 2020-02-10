@@ -1,9 +1,13 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
+
 import  { Form, Icon, Input, Button, Checkbox } from 'antd';
 import {Row,Col} from 'antd';
 
+import axios from 'axios';
+
 import './login.css'
+
 
 class LoginForm extends React.Component{
     handleSubmit = e => {
@@ -12,6 +16,15 @@ class LoginForm extends React.Component{
             if (!err) {
                 console.log('Received values of form: ', values);
             }
+            axios.post('http://127.0.0.1:8000/login/', 
+                values
+                  )
+              .then(function (response) {
+                      console.log(response);
+                    })
+              .catch(function (error) {
+                      console.log(error);
+                    });
         });
     };
 
@@ -38,7 +51,8 @@ class LoginForm extends React.Component{
                                 rules: [{ required: true, message: 'Please input your Password!' }],
                             })(
                                 <Input
-                                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                    prefix={<Icon type="lock" 
+                                    style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     type="password"
                                     placeholder="Password"
                                 />,
@@ -64,7 +78,6 @@ class LoginForm extends React.Component{
                     </Form>
                 </Col>
             </Row>
-            //</div>
         );
     }
 }

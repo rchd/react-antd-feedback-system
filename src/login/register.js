@@ -10,8 +10,10 @@ import {
     Checkbox,
     Button,
     AutoComplete,
+    message,
 } from 'antd';
 import React from 'react';
+import axios from 'axios';
 
 const { Option } = Select;
 const AutoCompleteOption = AutoComplete.Option;
@@ -51,6 +53,8 @@ const residences = [
     },
 ];
 
+const key='updatable';
+
 class Registration extends React.Component {
     state = {
         confirmDirty: false,
@@ -61,6 +65,23 @@ class Registration extends React.Component {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
             if (!err) {
+                message.loading({ content: 'Loading...', key });
+                axios.post('http://127.0.0.1:8000/registe/', 
+                    values
+                )
+                    .then(function (response) {
+                        console.log(response['data'])
+                        if(response['data']=='success')
+                            message.success({ 
+                                content: '注册成功!', 
+                                key, duration: 2 });
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                            message.success({ 
+                                content: '注册失败!', 
+                                key, duration: 2 });
+                    });
                 console.log('Received values of form: ', values);
             }
         });
@@ -251,8 +272,6 @@ class Registration extends React.Component {
                     </Form>
                 </Col>
             </Row>
-
-            //</div>
         );
     }
 }

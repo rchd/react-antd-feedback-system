@@ -9,6 +9,8 @@ import Charts  from './charts/charts';
 import NormalLoginForm from './login/login';
 import RegistrationForm from './login/register';
 import UsersList from './users/userslist';
+import UsersEdit from './users/usersedit';
+
 
 
 function App() {
@@ -20,6 +22,7 @@ function App() {
 		<Route path='/login' component={NormalLoginForm}></Route>
 		<Route path='/registe' component={RegistrationForm}></Route>
 		<Route path='/userlist' component={UsersList}></Route>
+		<Route path='/useredit' component={UsersEdit}></Route>
 		</div>
 		</Router>
 	);

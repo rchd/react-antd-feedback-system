@@ -4,12 +4,21 @@ import {Table,Button} from 'antd';
 import {DatePicker} from 'antd';
 import {Input} from 'antd';
 import {Row,Col} from 'antd';
+import {Modal} from 'antd';
 
 import SiderBar from '../sidebar/sidebar'
 import './userslist.css'
 
-const {RangePicker} =DatePicker;
-const {Search}=Input;
+
+const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    },
+    getCheckboxProps: record => ({
+        disabled: record.name === 'Disabled User', // Column configuration not to be checked
+        name: record.name,
+    }),
+};
 
 const data = [
     {
@@ -38,11 +47,30 @@ const data = [
     },
 ];
 
-class UsersList extends React.Component{
+class UsersEdit extends React.Component{
     state = {
         filteredInfo: null,
         sortedInfo: null,
+        modalVisible:false,
     };
+
+    showModal=()=>{
+        this.setState({
+            modalVisible:true,
+        });
+    }
+    handleModalOk=e=>{
+        console.log(e);
+        this.setState({
+            modalVisible:false,
+        });
+    }
+    handleModalCancel=e=>{
+        console.log(e);
+        this.setState({
+            modalVisible:false,
+        });
+    }
 
     handleChange = (pagination, filters, sorter) => {
         console.log('Various parameters', pagination, filters, sorter);
@@ -144,39 +172,43 @@ class UsersList extends React.Component{
 
         ];
         return (
-            <SiderBar defaultSelectedKeys={['3']}
-                       title="用户"
-                       subtitle="用户列表"
+            <SiderBar defaultSelectedKeys={['4']}
+                title="用户"
+                subtitle="用户编辑"
             >
-            <div>
-                <div className="table-operations">
-                    <Row gutter={[8,8]}>
-                        <Col md={24} lg={8}>
-                            <RangePicker onChange={this.onChnageDate} />
-                        </Col>
-                        <Col md={24} lg={8}>
-                            <Search
-                                placeholder="input search text"
-                                onSearch={value => console.log(value)}
-                            />
-                        </Col>
-                    </Row>
-                    {
-                        //<Button onClick={this.setAgeSort}>Sort age</Button>
-                        //<Button onClick={this.clearFilters}>Clear filters</Button>
-                        //<Button onClick={this.clearAll}>Clear filters and sorters</Button>
-                    }
+                <Button type="primary" >
+                    批量删除
+                </Button>
+                <Button type="primary" 
+                        onClick={this.showModal}>
+                    添加新用户
+                </Button>
+                <Modal title="添加新用户"
+                    visible={this.state.modalVisible}
+                    onOk={this.handleModalOk}
+                    onCancel={this.handleModalCancel}
+                >
+                    <Input></Input>  
+                </Modal>
+                <div>
+                    <div className="table-operations">
+                        {
+                            //<Button onClick={this.setAgeSort}>Sort age</Button>
+                            //<Button onClick={this.clearFilters}>Clear filters</Button>
+                            //<Button onClick={this.clearAll}>Clear filters and sorters</Button>
+                        }
+                    </div>
+                    <Table columns={columns} 
+                        rowSelection={rowSelection}
+                        dataSource={data}
+                        onChange={this.handleChange} 
+                        scroll={{x:1500,y:0}}
+                    />
                 </div>
-                <Table columns={columns} 
-                    dataSource={data}
-                    onChange={this.handleChange} 
-                    scroll={{x:1500,y:0}}
-                />
-            </div>
-        </SiderBar>
+            </SiderBar>
         );
     }
 
 }
-export default UsersList;
+export default UsersEdit;
 
