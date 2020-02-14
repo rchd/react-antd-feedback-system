@@ -5,51 +5,56 @@ import {DatePicker} from 'antd';
 import {Input} from 'antd';
 import {Row,Col} from 'antd';
 
+import axios from 'axios';
+
 import SiderBar from '../sidebar/sidebar'
 import './userslist.css'
 
 const {RangePicker} =DatePicker;
 const {Search}=Input;
 
-const data = [
-    {
-        key: '1',
-        name: 'John Brown',
-        age: 32,
-        address: 'New York No. 1 Lake Park',
-    },
-    {
-        key: '2',
-        name: 'Jim Green',
-        age: 42,
-        address: 'London No. 1 Lake Park',
-    },
-    {
-        key: '3',
-        name: 'Joe Black',
-        age: 32,
-        address: 'Sidney No. 1 Lake Park',
-    },
-    {
-        key: '4',
-        name: 'Jim Red',
-        age: 32,
-        address: 'London No. 2 Lake Park',
-    },
-];
 
 class UsersList extends React.Component{
     state = {
         filteredInfo: null,
         sortedInfo: null,
+        data: [],
+        pagination: {},
+        loading: false,
     };
+
+    constructor(props){
+        super(props);
+        this.fetchData();
+    }
 
     handleChange = (pagination, filters, sorter) => {
         console.log('Various parameters', pagination, filters, sorter);
+            const pager = { ...this.state.pagination };
         this.setState({
             filteredInfo: filters,
             sortedInfo: sorter,
+            pagination: pager,
         });
+        this.fetchData();
+    };
+
+    fetchData=()=>{
+         this.setState({ loading: true });
+                axios.post('http://127.0.0.1:8000/userlist/', 
+                    {} 
+                )
+            .then((response)=> {
+                        console.log(response['data'])
+                        this.setState({
+                            data:response['data']
+                        });
+                        
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+         this.setState({ loading: false});
     };
 
     clearFilters = () => {
@@ -82,8 +87,8 @@ class UsersList extends React.Component{
         const columns = [
             {
                 title: '用户名',
-                dataIndex: 'name',
-                key: 'name',
+                dataIndex: 'nickname',
+                key: 'nickname',
                 filters: [{ text: 'Joe', value: 'Joe' }, { text: 'Jim', value: 'Jim' }],
                 filteredValue: filteredInfo.name || null,
                 onFilter: (value, record) => record.name.includes(value),
@@ -101,8 +106,8 @@ class UsersList extends React.Component{
             },
             {
                 title: '地址',
-                dataIndex: 'address',
-                key: 'address',
+                dataIndex: 'city',
+                key: 'city',
                 filters: [{ text: 'London', value: 'London' }, { text: 'New York', value: 'New York' }],
                 filteredValue: filteredInfo.address || null,
                 onFilter: (value, record) => record.address.includes(value),
@@ -136,8 +141,8 @@ class UsersList extends React.Component{
             },
             {
                 title:'注册日期',
-                dataIndex:'registeDate',
-                key:'registeDate',
+                dataIndex:'ctime',
+                key:'ctime',
                 ellipsis: true,
             }
 
@@ -168,7 +173,8 @@ class UsersList extends React.Component{
                     }
                 </div>
                 <Table columns={columns} 
-                    dataSource={data}
+                    loading={this.state.loading}
+                    dataSource={this.state.data}
                     onChange={this.handleChange} 
                     scroll={{x:1500,y:0}}
                 />
