@@ -59,61 +59,6 @@ class SiderBar extends React.Component{
                                 <Link to='/charts'>统计</Link>
                             </span>
                         </Menu.Item>
-                        <SubMenu
-                            key="sub1"
-                            title={
-                                <span>
-                                    <Icon type="user" />
-                                    <span>用户</span>
-                                </span>
-                            }
-                        >
-                            <Menu.Item key="3">
-                                <Link to="/userlist">
-                                    用户列表
-                                </Link>
-                            </Menu.Item>
-                            <Menu.Item key="4">
-                                <Link to="/useredit" >
-                                    用户编辑
-                                </Link>
-                            </Menu.Item>
-                        </SubMenu>
-                        <SubMenu
-                            key="sub3"
-                            title={
-                                <span>
-                                    <Icon type="team" />
-                                    <span>分类</span>
-                                </span>
-                            }>
-                            <Menu.Item key="7">
-                                <Link to="/classadd">添加分类
-                                </Link>
-                                </Menu.Item>
-                                <Menu.Item key="10">
-                                    <Link to="/classdetail">
-                                        分类信息
-                                    </Link>
-                                    </Menu.Item>
-                        </SubMenu>
-                        <SubMenu
-                            key="sub2"
-                            title={
-                                <span>
-                                    <Icon type="team" />
-                                    <span>反馈</span>
-                                </span>
-                            }>
-                            <Menu.Item key="6">
-                                <Link to="/commentlist">反馈列表
-                                </Link> 
-                            </Menu.Item>
-                            <Menu.Item key="8">
-                                <Link to="/checkcomment">待审核
-                                </Link> 
-                            </Menu.Item>
-                        </SubMenu>
                         <Menu.Item key="9">
                             <Icon type="file" />
                             <span>File</span>

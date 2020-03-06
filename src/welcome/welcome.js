@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Card} from 'antd';
 import {Table} from 'antd';
-import {Typography } from 'antd';
+//import {Typography } from 'antd';
 import {Row,Col} from 'antd';
 
 import SiderBar from '../sidebar/sidebar'
@@ -9,7 +9,7 @@ import './welcome.css';
 
 //const { Typography } = antd;
 
-const { Title } = Typography;
+//const { Title } = Typography;
 
 const columns = [
     {
@@ -85,26 +85,35 @@ class Welcome extends React.Component{
                         <Row type="flex">
                             <Col md={12} lg={6}>
                                 <Card.Grid style={gridStyle}>
-                                    <Title level={1}>反馈总数</Title>
-                                    <Title level={4}>300</Title>
+                                    {
+                                    //<Title level={1}>反馈总数</Title>
+                                    //<Title level={4}>300</Title>
+
+                                    }
                                 </Card.Grid>
                             </Col>
                             <Col md={12} lg={6}>
                                 <Card.Grid  style={gridStyle}>
-                                    <Title level={1}>待处理数</Title>
-                                    <Title level={4}>300</Title>
+                                    {
+                                    //<Title level={1}>待处理数</Title>
+                                    //<Title level={4}>300</Title>
+                                    }
                                 </Card.Grid>
                             </Col>
                             <Col md={12} lg={6}>
                                 <Card.Grid style={gridStyle}>
-                                    <Title level={1}>用户数量</Title>
-                                    <Title level={4}>300</Title>
+                                    {
+                                    //<Title level={1}>用户数量</Title>
+                                    //<Title level={4}>300</Title>
+                                    }
                                 </Card.Grid>
                             </Col>
                             <Col md={12} lg={6}>
                                 <Card.Grid style={gridStyle}>
-                                    <Title level={1}>已完成</Title>
-                                    <Title level={4}>300</Title>
+                                    {
+                                    //<Title level={1}>已完成</Title>
+                                    //<Title level={4}>300</Title>
+                                    }
                                 </Card.Grid>
                             </Col>
                         </Row>

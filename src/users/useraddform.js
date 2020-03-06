@@ -6,10 +6,6 @@ import {
     Icon,
     Cascader,
     Select,
-    Row,
-    Col,
-    Checkbox,
-    Button,
     AutoComplete,
 } from 'antd';
 
@@ -101,7 +97,6 @@ class RegistrationForm extends React.Component {
     render() {
         const { getFieldDecorator } = this.props.form;
         const { autoCompleteResult } = this.state;
-
         const formItemLayout = {
             labelCol: {
                 xs: { span: 24 },
@@ -136,10 +131,9 @@ class RegistrationForm extends React.Component {
         const websiteOptions = autoCompleteResult.map(website => (
             <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
         ));
-
         return (
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-                <Form.Item label="E-mail">
+                <Form.Item label="邮箱地址">
                     {getFieldDecorator('email', {
                         rules: [
                             {
@@ -153,7 +147,7 @@ class RegistrationForm extends React.Component {
                         ],
                     })(<Input />)}
                 </Form.Item>
-                <Form.Item label="Password" hasFeedback>
+                <Form.Item label="密码" hasFeedback>
                     {getFieldDecorator('password', {
                         rules: [
                             {
@@ -166,7 +160,7 @@ class RegistrationForm extends React.Component {
                         ],
                     })(<Input.Password />)}
                 </Form.Item>
-                <Form.Item label="Confirm Password" hasFeedback>
+                <Form.Item label="确认密码" hasFeedback>
                     {getFieldDecorator('confirm', {
                         rules: [
                             {
@@ -182,7 +176,7 @@ class RegistrationForm extends React.Component {
                 <Form.Item
                     label={
                         <span>
-                            Nickname&nbsp;
+                            用户名称&nbsp;
                             <Tooltip title="What do you want others to call you?">
                                 <Icon type="question-circle-o" />
                             </Tooltip>
@@ -193,7 +187,7 @@ class RegistrationForm extends React.Component {
                         rules: [{ required: true, message: 'Please input your nickname!', whitespace: true }],
                     })(<Input />)}
                 </Form.Item>
-                <Form.Item label="Habitual Residence">
+                <Form.Item label="居住地址">
                     {getFieldDecorator('residence', {
                         initialValue: ['zhejiang', 'hangzhou', 'xihu'],
                         rules: [
@@ -201,12 +195,12 @@ class RegistrationForm extends React.Component {
                         ],
                     })(<Cascader options={residences} />)}
                 </Form.Item>
-                <Form.Item label="Phone Number">
+                <Form.Item label="电话号码">
                     {getFieldDecorator('phone', {
                         rules: [{ required: true, message: 'Please input your phone number!' }],
                     })(<Input addonBefore={prefixSelector} style={{ width: '100%' }} />)}
                 </Form.Item>
-                <Form.Item label="Website">
+                <Form.Item label="网站地址">
                     {getFieldDecorator('website', {
                         rules: [{ required: true, message: 'Please input website!' }],
                     })(
