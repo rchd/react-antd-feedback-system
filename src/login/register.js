@@ -71,7 +71,7 @@ class Registration extends React.Component {
                 )
                     .then(function (response) {
                         console.log(response['data'])
-                        if(response['data']=='success')
+                        if(response['data']==='success')
                             message.success({ 
                                 content: '注册成功!', 
                                 key, duration: 2 });

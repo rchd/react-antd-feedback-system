@@ -1,11 +1,11 @@
 import React from 'react';
 
 import {Table,Button} from 'antd';
-import {DatePicker} from 'antd';
+//import {DatePicker} from 'antd';
 //import {Input} from 'antd';
-import {Row,Col} from 'antd';
+//import {Row,Col} from 'antd';
 import {Modal} from 'antd';
-import {Input,Popconfirm} from 'antd';
+import {Popconfirm} from 'antd';
 import {message} from 'antd';
 
 import axios from 'axios';
@@ -25,6 +25,7 @@ class UsersEdit extends React.Component{
         confirmDirty: false,
         autoCompleteResult: [],
         selectedRowKeys:[],
+        modalVisible:false,
     };
 
 
@@ -70,7 +71,7 @@ class UsersEdit extends React.Component{
                 )
                     .then(function (response) {
                         console.log(response['data'])
-                        if(response['data']=='success')
+                        if(response['data']==='success')
                             message.success({
                                 content: '注册成功!',
                                 key, duration: 2 });
@@ -265,7 +266,7 @@ class UsersEdit extends React.Component{
                     onOk={this.handleModalOk}
                     onCancel={this.handleModalCancel}
                 >
-                    <AddUser ref="getUserInfo" />
+                <AddUser ref="getUserInfo" /> 
                 </Modal>
                 <div>
                     <div className="table-operations">

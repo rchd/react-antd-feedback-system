@@ -218,5 +218,5 @@ class RegistrationForm extends React.Component {
     }
 }
 
-const AddUser= Form.create({ name: 'register' })(RegistrationForm);
+const AddUser= Form.create({})(RegistrationForm);
 export default AddUser;

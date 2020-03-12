@@ -51,7 +51,7 @@ class FormComment extends React.Component {
 
     }
 
-    buildPreviewHtml () {
+    buildPreviewHtml =()=> {
 
         return `
           <!Doctype html>
@@ -106,7 +106,6 @@ class FormComment extends React.Component {
             </body>
           </html>
         `
-    
       }
     
 
@@ -144,11 +143,21 @@ class FormComment extends React.Component {
         return (
             <div className="demo-container">
                 <Form onSubmit={this.handleSubmit}>
-                    <Form.Item  label="文章标题">
+                    <Form.Item  label="选择类别">
                         {getFieldDecorator('title', {
                             rules: [{
                                 required: true,
-                                message: '请输入标题',
+                                message: '请选择类别',
+                            }],
+                        })(
+                            <Input size="large" placeholder="请输入标题"/>
+                        )}
+                    </Form.Item>
+                    <Form.Item  label="选择产品">
+                        {getFieldDecorator('title', {
+                            rules: [{
+                                required: true,
+                                message: '请选择产品',
                             }],
                         })(
                             <Input size="large" placeholder="请输入标题"/>

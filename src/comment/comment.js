@@ -11,6 +11,7 @@ class CommentList extends React.Component{
                         title="反馈"
                         subtitle="反馈列表"
             >
+                askdfjksdfj
             </SideBar>
         );
     }

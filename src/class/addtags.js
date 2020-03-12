@@ -4,7 +4,6 @@ import  { Form, Icon, Input, Button } from 'antd';
 import axios from 'axios';
 
 
-
 function hasErrors(fieldsError) {
     return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
@@ -14,6 +13,7 @@ class HorizontalAddTagsForm extends React.Component {
         // To disable submit button at the beginning.
         this.props.form.validateFields();
     }
+
 
     handleSubmit = e => {
         e.preventDefault();
