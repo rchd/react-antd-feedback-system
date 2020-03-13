@@ -95,11 +95,9 @@ class AddProductForm extends React.Component {
                 <Option value="87">+87</Option>
             </Select>,
         );
-
         const websiteOptions = autoCompleteResult.map(website => (
             <AutoCompleteOption key={website}>{website}</AutoCompleteOption>
         ));
-
         return (
             <Form  onSubmit={this.handleSubmit}>
                 <Form.Item >
