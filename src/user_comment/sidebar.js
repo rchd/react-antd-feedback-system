@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 import './sidebar.css';
 
 
+
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -56,7 +57,13 @@ class SiderBar extends React.Component{
                         <Menu.Item key="2">
                             <Icon type="desktop" />
                             <span>
-                                <Link to='/charts'>统计</Link>
+                                <Link to='/usercomment'>提交反馈</Link>
+                            </span>
+                        </Menu.Item>
+                        <Menu.Item key="3">
+                            <Icon type="desktop" />
+                            <span>
+                                <Link to='/userchartroom'>聊天室</Link>
                             </span>
                         </Menu.Item>
                         <Menu.Item key="9">

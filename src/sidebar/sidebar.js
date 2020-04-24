@@ -114,9 +114,16 @@ class SiderBar extends React.Component{
                                 </Link> 
                             </Menu.Item>
                         </SubMenu>
+                        <Menu.Item key="15">
+                            <Icon type="file" />
+                            <span> 
+                            <Link to="/discussgroup">讨论组   
+                            </Link> 
+                        </span>  
+                        </Menu.Item>
                         <Menu.Item key="9">
                             <Icon type="file" />
-                            <span>File</span>
+                            <span>文件</span>
                         </Menu.Item>
                     </Menu>
                 </Sider>

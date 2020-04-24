@@ -2,6 +2,7 @@ import 'braft-editor/dist/index.css'
 import React from 'react'
 import BraftEditor from 'braft-editor'
 import { Form, Input, Button } from 'antd'
+import axios from 'axios';
 
 class FormComment extends React.Component {
 
@@ -31,11 +32,20 @@ class FormComment extends React.Component {
         this.props.form.validateFields((error, values) => {
             if (!error) {
                 const submitData = {
-                    title: values.title,
-                    content:values.content.toHTML()
+                    product: values.title,
+                    comment:values.content.toHTML()
                     //content: values.content.toRAW() // or values.content.toHTML()
                 }
                 console.log(submitData)
+                axios.post('http://127.0.0.1:8000/commentadd/', 
+                    submitData 
+                )
+                    .then(function (response) {
+                        console.log(response['data'])
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
             }
         })
     }
