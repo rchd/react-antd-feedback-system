@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
-    "antd": "3.12.4",
+    "antd": "3.25",
     "axios": "^0.19.2",
     "braft-editor": "^2.3.9",
     "chart.js": "^2.9.3",
