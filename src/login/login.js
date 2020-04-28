@@ -3,10 +3,13 @@ import {Link} from 'react-router-dom';
 
 import  { Form, Icon, Input, Button, Checkbox } from 'antd';
 import {Row,Col} from 'antd';
+import {Card} from 'antd';
 
 import axios from 'axios';
 
 import './login.css'
+
+const {Meta} = Card;
 
 
 class LoginForm extends React.Component{
@@ -18,13 +21,13 @@ class LoginForm extends React.Component{
             }
             axios.post('http://127.0.0.1:8000/login/', 
                 values
-                  )
-              .then(function (response) {
-                      console.log(response);
-                    })
-              .catch(function (error) {
-                      console.log(error);
-                    });
+            )
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         });
     };
 
@@ -32,52 +35,59 @@ class LoginForm extends React.Component{
         const { getFieldDecorator } = this.props.form;
         return (
             //<div className="login-form-main">
-            <Row type="flex" justify="center" align="middle">
-                <Col span={12} offset={6} >
-                    <Form onSubmit={this.handleSubmit} className="login-form">
-                        <Form.Item>
-                            {getFieldDecorator('username', {
-                                rules: [{ required: true, message: 'Please input your username!' }],
-                            })(
-                                <Input
-                                    prefix={<Icon type="user" 
-                                        style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    placeholder="Username"
-                                />,
-                            )}
-                        </Form.Item>
-                        <Form.Item>
-                            {getFieldDecorator('password', {
-                                rules: [{ required: true, message: 'Please input your Password!' }],
-                            })(
-                                <Input
-                                    prefix={<Icon type="lock" 
-                                    style={{ color: 'rgba(0,0,0,.25)' }} />}
-                                    type="password"
-                                    placeholder="Password"
-                                />,
-                            )}
-                        </Form.Item>
-                        <Form.Item>
-                            {getFieldDecorator('remember', {
-                                valuePropName: 'checked',
-                                initialValue: true,
-                            })(<Checkbox>Remember me</Checkbox>)}
-                            <a className="login-form-forgot" href="">
-                                Forgot password
-                            </a>
-                            <Button type="primary" htmlType="submit" 
-                                className="login-form-button">
-                                Log in
-                            </Button>
-                            Or 
-                            <Link to="/registe"	>
-                                register now!
-                            </Link>
-                        </Form.Item>
-                    </Form>
-                </Col>
-            </Row>
+            <Row type="flex" justify="center" align="middle" style={{minHeight:'80vh'}}>
+            <Col>
+            <Card title = "登录"  
+                style= {{width:500, textAlign:"center"}}> 
+                    <Row type="flex" justify="center" align="middle">
+                        <Col >
+                            <Form onSubmit={this.handleSubmit} className="login-form">
+                                <Form.Item>
+                                    {getFieldDecorator('username', {
+                                        rules: [{ required: true, message: 'Please input your username!' }],
+                                    })(
+                                        <Input
+                                            prefix={<Icon type="user" 
+                                                style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                            placeholder="用户名"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item>
+                                    {getFieldDecorator('password', {
+                                        rules: [{ required: true, message: 'Please input your Password!' }],
+                                    })(
+                                        <Input
+                                            prefix={<Icon type="lock" 
+                                                style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                            type="password"
+                                            placeholder="密码"
+                                        />,
+                                    )}
+                                </Form.Item>
+                                <Form.Item>
+                                    {getFieldDecorator('admin', {
+                                        valuePropName: 'checked',
+                                        initialValue: true,
+                                    })(<Checkbox>记住我</Checkbox>)}
+                                    <a className="login-form-forgot" href="">
+                                        忘记密码
+                                    </a>
+                                    <Button type="primary" htmlType="submit" 
+                                        className="login-form-button">
+                                        登录
+                                    </Button>
+                                    或
+                                    <Link to="/registe"	>
+                                        注册
+                                    </Link>
+                                </Form.Item>
+                            </Form>
+                        </Col>
+                    </Row>
+            </Card>  
+        </Col>
+    </Row>
         );
     }
 }
