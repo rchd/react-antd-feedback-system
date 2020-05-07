@@ -3,33 +3,47 @@ import React from 'react'
 import {Row,Col} from 'antd';
 import { Input,Button } from 'antd';
 
+import $ from 'jquery';
+
 import axios from 'axios';
+
+//import Websocket from 'react-websocket';
 
 import SiderBar from './sidebar';
 
 const { TextArea } = Input;
 
 class ChartRoom extends React.Component {
-    constructor(){
-        super();
-        this.WebSocketTest();
+    constructor(props){
+        super(props);
+        this.state={
+            message:"",
+        }
+        this.sendMsg=this.sendMsg.bind(this);
     }
     sendMsg=()=>{
-        //axios.post('http://127.0.0.1:8000/send/',this.input.value)
-            //.then(function(response){
-                //console.log(response)
-            //})
-            //.catch(function(error){
-                //console.log(error);
-            //});
-        //console.log(this.refs.message.value);
+        var socket= new WebSocket("ws://127.0.0.1:8000/chatroom/");
+        socket.onopen = function () {
+            console.log('WebSocket open');//成功连接上Websocket
+            socket.send($("#msg").val());//发送数据到服务端
+        };
+        socket.onmessage = function (e) {
+            console.log('message: ' + e.data);//打印服务端返回的数据
+            $('#msgbox').append( e.data + '\n');
+        };
+    }
+
+    inputValue=(e)=>{
+        this.setState({
+            message:e.target.value
+        });
     }
 
     WebSocketTest=()=> {
         if ("WebSocket" in window) {
             alert("您的浏览器支持 WebSocket!");
             // 打开一个 web socket
-            var ws = new WebSocket("ws://127.0.0.1:8000/link/");
+            var ws = new WebSocket("ws://127.0.0.1:8000/chatroom/");
             ws.onopen = function () {
                 // Web Socket 已连接上，使用 send() 方法尝试发送数据
                 ws.send("test");
@@ -57,16 +71,16 @@ class ChartRoom extends React.Component {
             <SiderBar>
                 <Row gutter={[16,16]}>
                     <Col>
-                        <TextArea rows={30} />
+                        <TextArea id="msgbox"  rows={30} />
                     </Col>
                 </Row>
                 <Row gutter={[16,16]}>
                     <Col span={21}>
-                        <Input ref='message' placeholder="请输入要发送的内容" />
+                        <Input id="msg" ref='message' placeholder="请输入要发送的内容" />
                     </Col>
                     <Col span={3}>
                         <Button
-                            onClick={this.sendMsg()}
+                            onClick={this.sendMsg}
                             type="primary">发送</Button>
                     </Col>
                 </Row>
