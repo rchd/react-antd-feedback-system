@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Card} from 'antd';
 import {Table} from 'antd';
+import {Statistic} from 'antd';
 //import {Typography } from 'antd';
 import {Row,Col} from 'antd';
 
@@ -90,6 +91,7 @@ class Welcome extends React.Component{
                                     //<Title level={4}>300</Title>
 
                                     }
+                                    <Statistic title="需处理" value={123456}/>
                                 </Card.Grid>
                             </Col>
                             <Col md={12} lg={6}>
@@ -98,6 +100,7 @@ class Welcome extends React.Component{
                                     //<Title level={1}>待处理数</Title>
                                     //<Title level={4}>300</Title>
                                     }
+                                    <Statistic title="已处理" value={123456}/>
                                 </Card.Grid>
                             </Col>
                             <Col md={12} lg={6}>
@@ -106,6 +109,7 @@ class Welcome extends React.Component{
                                     //<Title level={1}>用户数量</Title>
                                     //<Title level={4}>300</Title>
                                     }
+                                    <Statistic title="用户数" value={123456}/>
                                 </Card.Grid>
                             </Col>
                             <Col md={12} lg={6}>
@@ -114,6 +118,7 @@ class Welcome extends React.Component{
                                     //<Title level={1}>已完成</Title>
                                     //<Title level={4}>300</Title>
                                     }
+                                    <Statistic title="讨论组数" value={123456}/>
                                 </Card.Grid>
                             </Col>
                         </Row>

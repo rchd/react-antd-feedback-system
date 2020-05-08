@@ -1,5 +1,5 @@
-import React from 'react';
 
+import React from 'react';
 import {Table,Button} from 'antd';
 import {DatePicker} from 'antd';
 import {Input} from 'antd';
@@ -87,8 +87,8 @@ class UsersList extends React.Component{
         const columns = [
             {
                 title: '用户名',
-                dataIndex: 'nickname',
                 key: 'nickname',
+                dataIndex: 'nickname',
                 filters: [{ text: 'Joe', value: 'Joe' }, { text: 'Jim', value: 'Jim' }],
                 filteredValue: filteredInfo.name || null,
                 onFilter: (value, record) => record.name.includes(value),
@@ -145,8 +145,6 @@ class UsersList extends React.Component{
                 key:'ctime',
                 ellipsis: true,
             }
-
-
         ];
         return (
             <SiderBar defaultSelectedKeys={['3']}

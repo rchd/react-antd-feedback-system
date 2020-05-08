@@ -228,7 +228,7 @@ class UsersEdit extends React.Component{
                 render: (text, record) =>
                 this.state.data.length >= 1 ? (
                     <Popconfirm title="确定要删除?"
-                        onConfirm={() => this.handleDelete(record._id)}>
+                        onConfirm={() => this.handleDelete(record.id)}>
                         <a>删除</a>
                     </Popconfirm>
                 ) : null,

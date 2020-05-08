@@ -2,6 +2,7 @@ import React from 'react';
 
 import {Table,Button,Modal,Popconfirm} from 'antd';
 
+import {message} from 'antd';
 import axios from 'axios';
 
 import SideBar from '../sidebar/sidebar';
@@ -50,6 +51,25 @@ class DiscussGroup extends React.Component {
             }
         });
     }
+    handleDelete = id=> {
+        const key='updatable';
+        message.loading({ content: 'Loading...', key});
+        const data= [...this.state.data];
+        console.log(id);
+        axios.post('http://127.0.0.1:8000/discussgroupdel/',
+            id
+        )
+            .then((response)=> {
+                console.log(response);
+                this.setState({ data: data.filter(item => item.id!== id) });
+                message.success({
+                    content: '删除成功!',
+                    key, duration: 2 });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    };
 
     fetchData=()=>{
         axios.post('http://127.0.0.1:8000/discussgrouplist/', 
@@ -80,7 +100,9 @@ class DiscussGroup extends React.Component {
                 dataIndex: 'operation',
                 render: (text, record) =>
                 this.state.data.length >= 1 ? (
-                    <Popconfirm title="确定要删除?">
+                    <Popconfirm title="确定要删除?"
+                        onConfirm={() => this.handleDelete(record.id)}>
+                        <a>删除</a>
                     </Popconfirm>
                 ) : null,
             },
