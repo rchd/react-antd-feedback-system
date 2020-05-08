@@ -110,7 +110,7 @@ class SiderBar extends React.Component{
                                 </Link> 
                             </Menu.Item>
                             <Menu.Item key="8">
-                                <Link to="/checkcomment">待审核
+                                <Link to="/commentcheck">待审核
                                 </Link> 
                             </Menu.Item>
                         </SubMenu>

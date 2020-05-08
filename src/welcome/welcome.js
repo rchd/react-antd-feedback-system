@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import {Card} from 'antd';
 import {Table} from 'antd';
 import {Statistic} from 'antd';
+import {Steps } from 'antd';
 //import {Typography } from 'antd';
 import {Row,Col} from 'antd';
 
 import SiderBar from '../sidebar/sidebar'
 import './welcome.css';
+
+const {Step}=Steps;
 
 //const { Typography } = antd;
 
@@ -77,64 +80,94 @@ class Welcome extends React.Component{
 
         return(
             <SiderBar defaultSelectedKeys={['1']}
-            
-                    title=""
-                    subtitle=""
-            >
-                <Row >
-                    <Card title="待办">
-                        <Row type="flex">
-                            <Col md={12} lg={6}>
-                                <Card.Grid style={gridStyle}>
-                                    {
-                                    //<Title level={1}>反馈总数</Title>
-                                    //<Title level={4}>300</Title>
 
-                                    }
-                                    <Statistic title="需处理" value={123456}/>
-                                </Card.Grid>
-                            </Col>
-                            <Col md={12} lg={6}>
-                                <Card.Grid  style={gridStyle}>
-                                    {
-                                    //<Title level={1}>待处理数</Title>
-                                    //<Title level={4}>300</Title>
-                                    }
-                                    <Statistic title="已处理" value={123456}/>
-                                </Card.Grid>
-                            </Col>
-                            <Col md={12} lg={6}>
-                                <Card.Grid style={gridStyle}>
-                                    {
-                                    //<Title level={1}>用户数量</Title>
-                                    //<Title level={4}>300</Title>
-                                    }
-                                    <Statistic title="用户数" value={123456}/>
-                                </Card.Grid>
-                            </Col>
-                            <Col md={12} lg={6}>
-                                <Card.Grid style={gridStyle}>
-                                    {
-                                    //<Title level={1}>已完成</Title>
-                                    //<Title level={4}>300</Title>
-                                    }
-                                    <Statistic title="讨论组数" value={123456}/>
-                                </Card.Grid>
-                            </Col>
-                        </Row>
-                    </Card>
-                </Row>
-                <div className="welcome">
-                    <Table
-                        columns={columns}
-                        dataSource={data}
-                        bordered
-                        pagination={false}
-                        title={() => '系统信息'}
-                        footer={() => 'Footer'}
-                    />
-                </div>
-            </SiderBar>
+                title=""
+                subtitle=""
+            >
+                    <Row >
+                        <Card title="待办">
+                            <Row type="flex">
+                                <Col md={12} lg={6}>
+                                    <Card.Grid style={gridStyle}>
+                                        {
+                                            //<Title level={1}>反馈总数</Title>
+                                            //<Title level={4}>300</Title>
+
+                                        }
+                                            <Statistic title="需处理" value={123456}/>
+                                        </Card.Grid>
+                                    </Col>
+                                    <Col md={12} lg={6}>
+                                        <Card.Grid  style={gridStyle}>
+                                            {
+                                                //<Title level={1}>待处理数</Title>
+                                                //<Title level={4}>300</Title>
+                                            }
+                                                <Statistic title="已处理" value={123456}/>
+                                            </Card.Grid>
+                                        </Col>
+                                        <Col md={12} lg={6}>
+                                            <Card.Grid style={gridStyle}>
+                                                {
+                                                    //<Title level={1}>用户数量</Title>
+                                                    //<Title level={4}>300</Title>
+                                                }
+                                                    <Statistic title="用户数" value={123456}/>
+                                                </Card.Grid>
+                                            </Col>
+                                            <Col md={12} lg={6}>
+                                                <Card.Grid style={gridStyle}>
+                                                    {
+                                                        //<Title level={1}>已完成</Title>
+                                                        //<Title level={4}>300</Title>
+                                                    }
+                                                        <Statistic title="讨论组数" value={123456}/>
+                                                    </Card.Grid>
+                                                </Col>
+                                            </Row>
+                                        </Card>
+                                    </Row>
+                                    <div className="welcome">
+                                        <Table
+                                            columns={columns}
+                                            dataSource={data}
+                                            bordered
+                                            pagination={false}
+                                            title={() => '系统信息'}
+                                            footer={() => 'Footer'}
+                                        />
+                                            </div>
+                                     
+                        <Card title="进度 ">
+                            <Row type="flex">
+                                <Col mg={24} lg={24}>
+                                            <Steps
+                                                type="navigation"
+                                                size="small"
+                                            >
+                                            <Step
+                                            title="Step 1"
+                                            subTitle="00:00:05"
+                                                status="finish"
+                                                description="This is a description."
+                                            />
+                                                    <Step
+                                                        title="Step 2"
+                                                        subTitle="00:01:02"
+                                                        status="process"
+                                                        description="This is a description."
+                                                    />
+                                                            <Step
+                                                                title="Step 3"
+                                                                subTitle="waiting for longlong time"
+                                                                status="wait"
+                                                                description="This is a description."
+                                                            />
+                                                                </Steps>
+                                                            </Col>
+                                                        </Row>
+                                                    </Card>
+                                                </SiderBar>
         );
     }
 }

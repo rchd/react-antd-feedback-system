@@ -13,6 +13,7 @@ import UsersEdit from './users/usersedit';
 import ClassEdit from './class/classedit'
 import ClassList from './class/classlist'
 import CommentList from './comment/comment';
+import CommentCheck from './comment/checkcomment';
 import DiscussGroup from './discuss/discuss';
 
 import UserComment from './user_comment/commentadd';
@@ -34,6 +35,7 @@ function App() {
                 <Route path='/classadd' component={ClassEdit}></Route>
                 <Route path='/classdetail' component={ClassList}></Route>
                 <Route path='/commentlist' component={CommentList}></Route>
+                <Route path='/commentcheck' component={CommentCheck}></Route>
                 <Route path='/discussgroup' component={DiscussGroup}></Route>
 
                 <Route path='/usercomment' component={UserComment}></Route>

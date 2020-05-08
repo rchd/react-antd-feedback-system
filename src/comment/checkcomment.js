@@ -1,13 +1,13 @@
 import React from 'react';
 
-import {Table,Tag,Switch} from 'antd';
+import {Table,Button,Tag,Switch} from 'antd';
 
 import axios from 'axios';
 
 import SideBar from '../sidebar/sidebar'
 
 
-class CommentList extends React.Component{
+class CommentCheck extends React.Component{
     state={
         data:[],
     }
@@ -89,7 +89,7 @@ class CommentList extends React.Component{
             <body>
               <div class="container">${text}</div>
             </body>
-          </html>
+            </html>
         `
     }
 
@@ -110,12 +110,6 @@ class CommentList extends React.Component{
     render(){
         const columns = [
             {
-                title: '姓名',
-                dataIndex: 'name',
-                key: 'name',
-                render: text => <a>{text}</a>,
-            },
-            {
                 title:'内容',
                 dataIndex:'comment',
                 key:'comment',
@@ -129,21 +123,6 @@ class CommentList extends React.Component{
                         }
                     </span>)
 
-            },
-            {
-                title:'客户名',
-                dataIndex:'user',
-                key:'user',
-            },
-            {
-                title:'产品名',
-                dataIndex:'product',
-                key:'product',
-            },
-            {
-                title:'类别',
-                dataIndex:'classes',
-                key:'classes',
             },
             {
                 title:'标签',
@@ -160,7 +139,16 @@ class CommentList extends React.Component{
                             );
                         })}
                             </span>),
-
+            },
+            {
+                title:'审核',
+                key:'check',
+                dataIndex:'check',
+                render:(text, record) => (
+                    <span>
+                        <Button type="primary"/>
+                    </span>
+                ),
             },
             {
                 title:'审核',
@@ -173,11 +161,6 @@ class CommentList extends React.Component{
                     </span>
                 ),
             },
-            {
-                title:'插入时间',
-                key:'timestamp',
-                dataIndex:'timestamp',
-            }
 
 
         ]
@@ -197,4 +180,4 @@ class CommentList extends React.Component{
     }
 
 }
-export default CommentList;
+export default CommentCheck;
