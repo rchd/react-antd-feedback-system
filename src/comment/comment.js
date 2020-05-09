@@ -110,12 +110,6 @@ class CommentList extends React.Component{
     render(){
         const columns = [
             {
-                title: '姓名',
-                dataIndex: 'name',
-                key: 'name',
-                render: text => <a>{text}</a>,
-            },
-            {
                 title:'内容',
                 dataIndex:'comment',
                 key:'comment',
@@ -152,7 +146,7 @@ class CommentList extends React.Component{
                 render: tags => (
                     <span>
                         {tags.map(tag => {
-                            let color='green'
+                            let color=tag.length>5?'green':'red';
                             return (
                                 <Tag color={color} key={tag}>
                                     {tag.toUpperCase()}

@@ -1,15 +1,18 @@
 import React from 'react';
 
-import {Table,Button,Tag,Switch} from 'antd';
+import {Modal,Table,Button,Tag,Switch} from 'antd';
 
 import axios from 'axios';
 
 import SideBar from '../sidebar/sidebar'
+import TagsForm from './formadd';
 
 
 class CommentCheck extends React.Component{
     state={
         data:[],
+        modalVisible:false,
+        currentId:"",
     }
     constructor(props){
         super(props);
@@ -25,7 +28,11 @@ class CommentCheck extends React.Component{
                 console.log(error); 
             });
     }
-
+    handleModalCancel=()=>{
+        this.setState({
+            modalVisible:false,
+        });
+    }
 
     preview = (text) => {
         if (window.previewWindow) {
@@ -92,6 +99,38 @@ class CommentCheck extends React.Component{
             </html>
         `
     }
+    showModal=(id)=>{
+        this.setState({
+            modalVisible:true,
+            currentId:id,
+        });
+        console.log(this.state.modalVisible)
+    }
+    handleModalOk=e=>{
+        console.log(e);
+        this.setState({
+            modalVisible:false,
+        });
+        let form=this.refs.getTagsName;
+        form.validateFields((err, values) => {
+            if(!err){
+                console.log(values);//这里可以拿到数据
+                axios.post('http://127.0.0.1:8000/settags/',
+                    {
+                        id:this.state.currentId,
+                        tags:values['name'] ,
+                    } 
+                )
+                    .then(function (response) {
+                        console.log(response['data'])
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                console.log('Received values of form: ', values);
+            }
+        });
+    }
 
 
 
@@ -131,7 +170,7 @@ class CommentCheck extends React.Component{
                 render: tags => (
                     <span>
                         {tags.map(tag => {
-                            let color='green'
+                            let color=tag.length>5?'green':'red';
                             return (
                                 <Tag color={color} key={tag}>
                                     {tag.toUpperCase()}
@@ -141,12 +180,12 @@ class CommentCheck extends React.Component{
                             </span>),
             },
             {
-                title:'审核',
-                key:'check',
-                dataIndex:'check',
+                title:'设置标签',
+                key:'tags',
+                dataIndex:'tags',
                 render:(text, record) => (
                     <span>
-                        <Button type="primary"/>
+                        <Button type="primary" onClick={()=>this.showModal(record.id)}/>
                     </span>
                 ),
             },
@@ -171,6 +210,13 @@ class CommentCheck extends React.Component{
                 title="反馈"
                 subtitle="反馈列表"
             >
+                <Modal title="添加讨论组"
+                    visible={this.state.modalVisible}
+                    onOk={this.handleModalOk}
+                    onCancel={this.handleModalCancel}
+                >
+                    <TagsForm ref='getTagsName'/> 
+                </Modal>
                     <Table columns={columns}
                         dataSource={this.state.data}
                     />

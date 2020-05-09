@@ -96,6 +96,13 @@ class DiscussGroup extends React.Component {
                 key: 'timestamp',
             },
             {
+                title: '进入聊天室',
+                dataIndex: 'name',
+                key: 'name',
+                //render:(text,record)=>
+
+            },
+            {
                 title: '操作',
                 dataIndex: 'operation',
                 render: (text, record) =>

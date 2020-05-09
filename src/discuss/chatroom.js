@@ -9,11 +9,11 @@ import axios from 'axios';
 
 //import Websocket from 'react-websocket';
 
-import SiderBar from './sidebar';
+import SiderBar from '../sidebar/sidebar';
 
 const { TextArea } = Input;
 
-class ChartRoom extends React.Component {
+class ChartRoomAdmin extends React.Component {
     constructor(props){
         super(props);
         this.state={
@@ -22,9 +22,6 @@ class ChartRoom extends React.Component {
         this.sendMsg=this.sendMsg.bind(this);
     }
     sendMsg=()=>{
-        if(window.s){
-            window.s.close();
-        }
         var socket= new WebSocket("ws://127.0.0.1:8000/chatroom/");
         socket.onopen = function () {
             console.log('WebSocket open');//成功连接上Websocket
@@ -34,11 +31,6 @@ class ChartRoom extends React.Component {
             console.log('message: ' + e.data);//打印服务端返回的数据
             $('#msgbox').append( e.data + '\n');
         };
-        if(socket.readyState === WebSocket.OPEN)
-            socket.onopen();
-        else
-            window.s=socket;
-
     }
 
     inputValue=(e)=>{
@@ -97,4 +89,4 @@ class ChartRoom extends React.Component {
     }
 
 }
-export default ChartRoom;
+export default ChartRoomAdmin;

@@ -29,6 +29,9 @@ class SiderBar extends React.Component{
             collapsed: !this.state.collapsed,
         });
     };
+    downlodwfile=()=>{
+        window.open("http://127.0.0.1:8000/downloadfile/");
+    }
 
     render(){
 
@@ -121,9 +124,21 @@ class SiderBar extends React.Component{
                             </Link> 
                         </span>  
                         </Menu.Item>
+                        <Menu.Item key="16">
+                            <Icon type="file" />
+                            <span>
+                                <Link to="/userchartroomadmin" >
+                                    聊天室
+                                </Link>
+                                </span>
+                        </Menu.Item>
                         <Menu.Item key="9">
                             <Icon type="file" />
-                            <span>文件</span>
+                            <span>
+                                <a onClick={this.downlodwfile}>
+                                    文件
+                                </a>
+                                </span>
                         </Menu.Item>
                     </Menu>
                 </Sider>
