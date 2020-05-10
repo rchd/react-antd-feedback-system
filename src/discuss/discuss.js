@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import {Table,Button,Modal,Popconfirm} from 'antd';
 
@@ -83,6 +84,7 @@ class DiscussGroup extends React.Component {
             console.log(error);
         });
     }
+
     render(){
         const columns=[
             {
@@ -99,8 +101,11 @@ class DiscussGroup extends React.Component {
                 title: '进入聊天室',
                 dataIndex: 'name',
                 key: 'name',
-                //render:(text,record)=>
-
+                render:(text,record)=>
+                //<Link to={{pathname:'/discussgroupmsg/',query:{name:record.name}}}>
+                <Link to={'/discussgruopmsg/'+record.name}>
+                    {record.name}
+                </Link>
             },
             {
                 title: '操作',

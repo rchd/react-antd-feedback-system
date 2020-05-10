@@ -5,9 +5,9 @@ import { Input,Button } from 'antd';
 
 import $ from 'jquery';
 
-import axios from 'axios';
-
+//import axios from 'axios';
 //import Websocket from 'react-websocket';
+
 
 import SiderBar from '../sidebar/sidebar';
 

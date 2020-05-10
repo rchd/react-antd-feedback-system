@@ -20,6 +20,7 @@ import UserComment from './user_comment/commentadd';
 import UserWelcome from './user_comment/welcome';
 import ChartRoom from './user_comment/chatroom';
 import ChartRoomAdmin from './discuss/chatroom';
+import DiscussChartRoomAdmin from './discuss/discusschatroom';
 
 
 
@@ -38,6 +39,8 @@ function App() {
                 <Route path='/commentlist' component={CommentList}></Route>
                 <Route path='/commentcheck' component={CommentCheck}></Route>
                 <Route path='/discussgroup' component={DiscussGroup}></Route>
+
+                <Route path='/discussgruopmsg/:name' component={DiscussChartRoomAdmin}></Route>
 
                 <Route path='/usercomment' component={UserComment}></Route>
                 <Route path='/userwelcome' component={UserWelcome}></Route>
