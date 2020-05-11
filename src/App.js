@@ -19,6 +19,9 @@ import DiscussGroup from './discuss/discuss';
 import UserComment from './user_comment/commentadd';
 import UserWelcome from './user_comment/welcome';
 import ChartRoom from './user_comment/chatroom';
+import UserDiscussGroup from './user_comment/discuss';
+import DiscussChatRoomUser from './user_comment/discusschatroom';
+
 import ChartRoomAdmin from './discuss/chatroom';
 import DiscussChartRoomAdmin from './discuss/discusschatroom';
 
@@ -41,11 +44,13 @@ function App() {
                 <Route path='/discussgroup' component={DiscussGroup}></Route>
 
                 <Route path='/discussgruopmsg/:name' component={DiscussChartRoomAdmin}></Route>
+                <Route path='/discussgruopmsguser/:name' component={DiscussChatRoomUser}></Route>
 
                 <Route path='/usercomment' component={UserComment}></Route>
                 <Route path='/userwelcome' component={UserWelcome}></Route>
                 <Route path='/userchartroom' component={ChartRoom}></Route>
                 <Route path='/userchartroomadmin' component={ChartRoomAdmin}></Route>
+                <Route path='/userdiscuss' component={UserDiscussGroup}></Route>
             </div>
         </Router>
     );

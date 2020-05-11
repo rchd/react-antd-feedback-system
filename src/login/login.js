@@ -24,6 +24,7 @@ class LoginForm extends React.Component{
             )
                 .then(function (response) {
                     console.log(response);
+                    window.location.href='http://localhost:3000/welcome';
                 })
                 .catch(function (error) {
                     console.log(error);
@@ -69,7 +70,7 @@ class LoginForm extends React.Component{
                                     {getFieldDecorator('admin', {
                                         valuePropName: 'checked',
                                         initialValue: true,
-                                    })(<Checkbox>记住我</Checkbox>)}
+                                    })(<Checkbox>管理员</Checkbox>)}
                                     <a className="login-form-forgot" href="">
                                         忘记密码
                                     </a>

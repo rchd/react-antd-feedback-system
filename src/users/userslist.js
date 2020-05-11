@@ -97,14 +97,6 @@ class UsersList extends React.Component{
                 ellipsis: true,
             },
             {
-                title: 'Age',
-                dataIndex: 'age',
-                key: 'age',
-                sorter: (a, b) => a.age - b.age,
-                sortOrder: sortedInfo.columnKey === 'age' && sortedInfo.order,
-                ellipsis: true,
-            },
-            {
                 title: '地址',
                 dataIndex: 'city',
                 key: 'city',
@@ -139,12 +131,6 @@ class UsersList extends React.Component{
                 key:'website',
                 ellipsis: true,
             },
-            {
-                title:'注册日期',
-                dataIndex:'ctime',
-                key:'ctime',
-                ellipsis: true,
-            }
         ];
         return (
             <SiderBar defaultSelectedKeys={['3']}

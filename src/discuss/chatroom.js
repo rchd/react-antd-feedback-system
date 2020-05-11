@@ -22,7 +22,8 @@ class ChartRoomAdmin extends React.Component {
         this.sendMsg=this.sendMsg.bind(this);
     }
     sendMsg=()=>{
-        var socket= new WebSocket("ws://127.0.0.1:8000/chatroom/");
+        if(!socket)
+            var socket= new WebSocket("ws://127.0.0.1:8000/chatroom/");
         socket.onopen = function () {
             console.log('WebSocket open');//成功连接上Websocket
             socket.send($("#msg").val());//发送数据到服务端

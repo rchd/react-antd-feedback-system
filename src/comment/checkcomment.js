@@ -135,7 +135,7 @@ class CommentCheck extends React.Component{
 
 
     fetchData=()=>{
-        axios.post('http://127.0.0.1:8000/commentlist/',
+        axios.post('http://127.0.0.1:8000/commentlistuncheck/',
             {}).then((response)=>{
                 console.log(response['data']);
                 this.setState({

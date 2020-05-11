@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React   from 'react';
 import {Card} from 'antd';
 import {Table} from 'antd';
 import {Statistic} from 'antd';
@@ -137,37 +137,37 @@ class Welcome extends React.Component{
                                             footer={() => 'Footer'}
                                         />
                                             </div>
-                                     
-                        <Card title="进度 ">
-                            <Row type="flex">
-                                <Col mg={24} lg={24}>
-                                            <Steps
-                                                type="navigation"
-                                                size="small"
-                                            >
-                                            <Step
-                                            title="Step 1"
-                                            subTitle="00:00:05"
-                                                status="finish"
-                                                description="This is a description."
-                                            />
-                                                    <Step
-                                                        title="Step 2"
-                                                        subTitle="00:01:02"
-                                                        status="process"
-                                                        description="This is a description."
-                                                    />
-                                                            <Step
-                                                                title="Step 3"
-                                                                subTitle="waiting for longlong time"
-                                                                status="wait"
-                                                                description="This is a description."
-                                                            />
-                                                                </Steps>
-                                                            </Col>
-                                                        </Row>
-                                                    </Card>
-                                                </SiderBar>
+
+                                            <Card title="进度 ">
+                                                <Row type="flex">
+                                                    <Col mg={24} lg={24}>
+                                                        <Steps
+                                                            type="navigation"
+                                                            size="small"
+                                                        >
+                                                                <Step
+                                                                    title="Step 1"
+                                                                    subTitle="00:00:05"
+                                                                    status="finish"
+                                                                    description="用户提交反馈"
+                                                                />
+                                                                <Step
+                                                                    title="Step 2"
+                                                                    subTitle="00:01:02"
+                                                                    status="process"
+                                                                    description="管理员审核反馈"
+                                                                />
+                                                                <Step
+                                                                    title="Step 3"
+                                                                    subTitle="waiting for longlong time"
+                                                                    status="wait"
+                                                                    description="完成反馈"
+                                                                />
+                                                        </Steps>
+                                                    </Col>
+                                                </Row>
+                                            </Card>
+                                    </SiderBar>
         );
     }
 }

@@ -71,8 +71,8 @@ class DiscussChatRoomAdmin extends React.Component {
                     <Col>
                         <Card title={this.props.match.params.name} 
                             bordered={true}
-                        style={{height:600,overflowY: 'scroll'}}>
-                        <div id="msgbox">
+                        style={{height:600,}}>
+                        <div id="msgbox" style={{overflowY: 'auto',}}>
                         </div>
                         </Card>
                         {

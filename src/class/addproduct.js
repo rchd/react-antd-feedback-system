@@ -31,10 +31,10 @@ class AddProductForm extends React.Component {
             if (!err) {
                 console.log('Received values of form: ', values);
                 axios.post(
-                    'http://127.0.0.1:8000/classadd/',
+                    'http://127.0.0.1:8000/productadd/',
                     values
                 ).then(function(response){
-                    console.log('OK');
+                    console.log(response['data']);
                 }).catch(function(error){
                     console.log('Failed');
                 });
@@ -150,7 +150,7 @@ class AddProductForm extends React.Component {
                 </Form.Item>
                 <Form.Item >
                     <Button type="primary" htmlType="submit">
-                        Register
+                       添加产品 
                     </Button>
                 </Form.Item>
             </Form>

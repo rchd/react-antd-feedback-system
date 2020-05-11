@@ -9,7 +9,7 @@ import './sidebar.css';
 
 
 const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+//const { SubMenu } = Menu;
 
 const text = <span>设置</span>;
 const content = (
@@ -67,8 +67,10 @@ class SiderBar extends React.Component{
                             </span>
                         </Menu.Item>
                         <Menu.Item key="9">
-                            <Icon type="file" />
-                            <span>File</span>
+                            <Icon type="file" /><span>
+                            <Link to="/userdiscuss">
+                            讨论组
+                        </Link></span>
                         </Menu.Item>
                     </Menu>
                 </Sider>

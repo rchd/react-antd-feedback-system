@@ -9,11 +9,11 @@ import axios from 'axios';
 
 //import Websocket from 'react-websocket';
 
-import SiderBar from '../sidebar/sidebar';
+import SiderBar from './sidebar';
 
 //const { TextArea } = Input;
 
-class DiscussChatRoomAdmin extends React.Component {
+class DiscussChatRoomUser extends React.Component {
     constructor(props){
         super(props);
 
@@ -22,7 +22,7 @@ class DiscussChatRoomAdmin extends React.Component {
         }
         this.sendMsg=this.sendMsg.bind(this);
         this.fetchData();
-        window.setInterval(this.fetchData,500*1);
+        //window.setInterval(this.fetchData,1000*1);
     }
     sendMsg=()=>{
         let group=this.props.match.params.name;
@@ -64,6 +64,7 @@ class DiscussChatRoomAdmin extends React.Component {
         });
     }
 
+
     render(){
         return (
             <SiderBar>
@@ -95,4 +96,4 @@ class DiscussChatRoomAdmin extends React.Component {
     }
 
 }
-export default DiscussChatRoomAdmin;
+export default DiscussChatRoomUser;
