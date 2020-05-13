@@ -88,7 +88,7 @@ class  ClassList extends React.Component{
     render(){
         const TagsColumns=[
             {
-                title:'类名',
+                title:'标签名',
                 dataIndex:'tagname',
                 key:'tagname',
             },
@@ -111,7 +111,7 @@ class  ClassList extends React.Component{
 
         const ClassColumns=[
             {
-                title:'标签名',
+                title:'类名',
                 dataIndex:'classname',
                 key:'classname',
             },

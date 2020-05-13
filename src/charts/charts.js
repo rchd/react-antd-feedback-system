@@ -7,10 +7,10 @@ import SiderBar from '../sidebar/sidebar'
 
 
 const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月'],
     datasets: [
         {
-            label: 'My First dataset',
+            label: '人数',
             fill: false,
             lineTension: 0.1,
             backgroundColor: 'rgba(75,192,192,0.4)',
@@ -54,12 +54,6 @@ class Charts extends React.Component{
                         <Line data={data} />
                     </Col>
                     <Col  md={24} lg={12}>
-                        <HorizontalBar data={data} />
-                    </Col>
-                    <Col md={24} lg={12}>
-                        <Line data={data} />
-                    </Col>
-                    <Col md={24} lg={12}>
                         <HorizontalBar data={data} />
                     </Col>
                 </Row>

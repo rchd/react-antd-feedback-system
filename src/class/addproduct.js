@@ -124,28 +124,16 @@ class AddProductForm extends React.Component {
                 </Form.Item>
                 <Form.Item >
                     {getFieldDecorator('tagsname', {
-                        rules: [{ required: true, message: '请选择一个标签' }],
+                        rules: [{ required: true, message: '请输入一个标签' }],
                     })(
-                        <AutoComplete
-                            dataSource={websiteOptions}
-                            onChange={this.handleWebsiteChange}
-                            placeholder="website"
-                        >
-                            <Input/>
-                        </AutoComplete>,
+                            <Input placeholder='请输入一个标签' />
                     )}
                 </Form.Item>
                 <Form.Item >
                     {getFieldDecorator('classname', {
                         rules: [{ required: true, message: '请选择一个类别' }],
                     })(
-                        <AutoComplete
-                            dataSource={websiteOptions}
-                            onChange={this.handleWebsiteChange}
-                            placeholder="website"
-                        >
-                            <Input />
-                        </AutoComplete>,
+                            <Input placeholder='请输入一个类别' />
                     )}
                 </Form.Item>
                 <Form.Item >

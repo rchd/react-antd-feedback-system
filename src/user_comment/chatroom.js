@@ -22,10 +22,9 @@ class ChartRoom extends React.Component {
         this.sendMsg=this.sendMsg.bind(this);
     }
     sendMsg=()=>{
-        if(window.s){
-            window.s.close();
-        }
-        var socket= new WebSocket("ws://127.0.0.1:8000/chatroom/");
+        if(window.s)
+            window.s.close()
+            var socket= new WebSocket("ws://127.0.0.1:8000/chatroom/");
         socket.onopen = function () {
             console.log('WebSocket open');//成功连接上Websocket
             socket.send($("#msg").val());//发送数据到服务端
@@ -34,11 +33,12 @@ class ChartRoom extends React.Component {
             console.log('message: ' + e.data);//打印服务端返回的数据
             $('#msgbox').append( e.data + '\n');
         };
-        if(socket.readyState === WebSocket.OPEN)
-            socket.onopen();
-        else
-            window.s=socket;
+        //if(socket.readyState === WebSocket.OPEN)
+            //socket.onopen();
+        //else
+            //window.s=socket;
 
+        window.s = socket;
     }
 
     inputValue=(e)=>{

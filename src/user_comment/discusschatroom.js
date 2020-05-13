@@ -22,7 +22,7 @@ class DiscussChatRoomUser extends React.Component {
         }
         this.sendMsg=this.sendMsg.bind(this);
         this.fetchData();
-        //window.setInterval(this.fetchData,1000*1);
+        window.setInterval(this.fetchData,1000*1);
     }
     sendMsg=()=>{
         let group=this.props.match.params.name;

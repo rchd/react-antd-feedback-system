@@ -39,11 +39,11 @@ class HorizontalAddClassForm extends React.Component {
             <Form layout="inline" onSubmit={this.handleSubmit}>
                 <Form.Item validateStatus={usernameError ? 'error' : ''} help={usernameError || ''}>
                     {getFieldDecorator('classname', {
-                        rules: [{ required: true, message: 'Please classname' }],
+                        rules: [{ required: true, message: '请输入类名' }],
                     })(
                         <Input
                             prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
-                            placeholder="请输入要类名"
+                            placeholder="请输入分类名"
                         />,
                     )}
                 </Form.Item>

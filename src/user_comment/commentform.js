@@ -32,7 +32,8 @@ class FormComment extends React.Component {
         this.props.form.validateFields((error, values) => {
             if (!error) {
                 const submitData = {
-                    product: values.title,
+                    product: values.product,
+                    class: values.class,
                     comment:values.content.toHTML()
                     //content: values.content.toRAW() // or values.content.toHTML()
                 }
@@ -153,24 +154,24 @@ class FormComment extends React.Component {
         return (
             <div className="demo-container">
                 <Form onSubmit={this.handleSubmit}>
-                    <Form.Item  label="选择类别">
-                        {getFieldDecorator('title', {
+                    <Form.Item  label="输入类别">
+                        {getFieldDecorator('class', {
                             rules: [{
                                 required: true,
-                                message: '请选择类别',
+                                message: '请输入类别',
                             }],
                         })(
-                            <Input size="large" placeholder="请输入标题"/>
+                            <Input size="large" placeholder="请输入类别"/>
                         )}
                     </Form.Item>
                     <Form.Item  label="选择产品">
-                        {getFieldDecorator('title', {
+                        {getFieldDecorator('product', {
                             rules: [{
                                 required: true,
-                                message: '请选择产品',
+                                message: '请输入产品',
                             }],
                         })(
-                            <Input size="large" placeholder="请输入标题"/>
+                            <Input size="large" placeholder="请输入产品"/>
                         )}
                     </Form.Item>
                     <Form.Item  label="文章正文">
