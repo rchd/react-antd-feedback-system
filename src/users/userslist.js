@@ -30,7 +30,7 @@ class UsersList extends React.Component{
 
     handleChange = (pagination, filters, sorter) => {
         console.log('Various parameters', pagination, filters, sorter);
-            const pager = { ...this.state.pagination };
+        const pager = { ...this.state.pagination };
         this.setState({
             filteredInfo: filters,
             sortedInfo: sorter,
@@ -40,21 +40,18 @@ class UsersList extends React.Component{
     };
 
     fetchData=()=>{
-         this.setState({ loading: true });
-                axios.post('http://127.0.0.1:8000/userlist/', 
-                    {} 
-                )
-            .then((response)=> {
-                        console.log(response['data'])
-                        this.setState({
-                            data:response['data']
-                        });
-                        
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-         this.setState({ loading: false});
+        this.setState({ loading: true });
+        axios.post('http://127.0.0.1:8000/userlist/', 
+            {} 
+        ).then((response)=> {
+            console.log(response['data'])
+            this.setState({
+                data:response['data']
+            });
+        }).catch(function (error) {
+            console.log(error);
+        });
+        this.setState({ loading: false});
     };
 
     clearFilters = () => {
@@ -134,36 +131,33 @@ class UsersList extends React.Component{
         ];
         return (
             <SiderBar defaultSelectedKeys={['3']}
-                       title="用户"
-                       subtitle="用户列表"
+                title="用户"
+                subtitle="用户列表"
             >
-            <div>
-                <div className="table-operations">
-                    <Row gutter={[8,8]}>
-                        <Col md={24} lg={8}>
-                            <RangePicker onChange={this.onChnageDate} />
-                        </Col>
-                        <Col md={24} lg={8}>
-                            <Search
-                                placeholder="input search text"
-                                onSearch={value => console.log(value)}
-                            />
-                        </Col>
-                    </Row>
-                    {
-                        //<Button onClick={this.setAgeSort}>Sort age</Button>
-                        //<Button onClick={this.clearFilters}>Clear filters</Button>
-                        //<Button onClick={this.clearAll}>Clear filters and sorters</Button>
-                    }
-                </div>
-                <Table columns={columns} 
-                    loading={this.state.loading}
-                    dataSource={this.state.data}
-                    onChange={this.handleChange} 
-                    scroll={{x:1500,y:0}}
-                />
-            </div>
-        </SiderBar>
+                    <div>
+                        <div className="table-operations">
+                            <Row gutter={[8,8]}>
+                                <Col md={24} lg={8}>
+                                    <Search
+                                        placeholder="搜索"
+                                        onSearch={value => console.log(value)}
+                                    />
+                                        </Col>
+                                    </Row>
+                                    {
+                                        //<Button onClick={this.setAgeSort}>Sort age</Button>
+                                        //<Button onClick={this.clearFilters}>Clear filters</Button>
+                                        //<Button onClick={this.clearAll}>Clear filters and sorters</Button>
+                                    }
+                                    </div>
+                                    <Table columns={columns} 
+                                        loading={this.state.loading}
+                                        dataSource={this.state.data}
+                                        onChange={this.handleChange} 
+                                        scroll={{x:1500,y:0}}
+                                    />
+                                        </div>
+                                    </SiderBar>
         );
     }
 

@@ -51,7 +51,7 @@ class HorizontalAddTagsForm extends React.Component {
                 </Form.Item>
                 <Form.Item>
                     <Button type="primary" htmlType="submit" disabled={hasErrors(getFieldsError())}>
-                        添加类别
+                        添加标签
                     </Button>
                 </Form.Item>
             </Form>

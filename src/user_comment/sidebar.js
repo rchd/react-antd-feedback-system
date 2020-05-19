@@ -60,6 +60,12 @@ class SiderBar extends React.Component{
                                 <Link to='/usercomment'>提交反馈</Link>
                             </span>
                         </Menu.Item>
+                        <Menu.Item key="4">
+                            <Icon type="desktop" />
+                            <span>
+                                <Link to='/usercommentlist'>反馈列表</Link>
+                            </span>
+                        </Menu.Item>
                         <Menu.Item key="3">
                             <Icon type="desktop" />
                             <span>
@@ -106,7 +112,7 @@ class SiderBar extends React.Component{
                         </div>
                     </Content>
                     <Footer style={{ textAlign: 'center' }}>
-                        Ant Design ©2018 Created by Ant UED
+                        页脚
                     </Footer>
                 </Layout>
             </Layout>

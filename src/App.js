@@ -21,6 +21,7 @@ import UserWelcome from './user_comment/welcome';
 import ChartRoom from './user_comment/chatroom';
 import UserDiscussGroup from './user_comment/discuss';
 import DiscussChatRoomUser from './user_comment/discusschatroom';
+import UserCommentList from './user_comment/comment';
 
 import ChartRoomAdmin from './discuss/chatroom';
 import DiscussChartRoomAdmin from './discuss/discusschatroom';
@@ -51,6 +52,7 @@ function App() {
                 <Route path='/userchartroom' component={ChartRoom}></Route>
                 <Route path='/userchartroomadmin' component={ChartRoomAdmin}></Route>
                 <Route path='/userdiscuss' component={UserDiscussGroup}></Route>
+                <Route path='/usercommentlist' component={UserCommentList}></Route>
             </div>
         </Router>
     );
